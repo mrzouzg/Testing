@@ -3,21 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = [
 
     {
-        id:1983,
-        name:'Zaher'
+        productName:'',
+        category:'',
+        imageUrl:'',
+        price:1,
+        quantity:1
+
     },
-    {
-        id:1985,
-        name:'Salam'
-    },
-    {
-        id:2012,
-        name:'Qamar'
-    },
-    {
-        id:2016,
-        name:'Omar'
-    },
+
 ]
 // initialState is array of users    create slice m2assas el feri3 branch manager
 const userSlice = createSlice({

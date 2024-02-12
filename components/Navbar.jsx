@@ -1,28 +1,15 @@
-import { useEffect, useState } from "react";
-
-import Navbar from "@/components/Navbar";
-import { NavMobile } from "@/components/NavMobile";
-import DropdownMenuProducts from "@/components/DropdownMenuProducts";
-import DropdownMenuSolutions from "@/components/DropdownMenuSolutions";
-import DropdownMenuResources from "@/components/DropdownMenuResources";
-
-import {
-  Container,
-  Flex,
-  Box,
-  Center,
-  Button,
-  Collapse,
-  useDisclosure,
-} from "@chakra-ui/react";
-
-
+import React from "react";
+import { Button, Box, Flex } from "@chakra-ui/react";
+import Link from "next/link";
+import DropdownMenuProducts from "./DropdownMenuProducts";
+import DropdownMenuSolutions from "./DropdownMenuSolutions";
+import DropdownMenuResources from "./DropdownMenuResources";
+import { useState } from "react";
 import { useAuth } from "@/context";
 
 
-function Home() {
-  const { isOpen, onToggle } = useDisclosure();
-
+const Navbar = ({ ...rest }) => {
+  
   const {
     isDropdownVisible,
     isDropdownVisible1,
@@ -35,38 +22,26 @@ function Home() {
     handleMouseLeave2,
   } = useAuth();
 
-  return (
-    <div>
-      <Box>
-        <NavMobile
-          isOpen={isOpen}
-          onToggle={onToggle}
-          display={{ base: "flex", md: "none" }}
-          
-        />
 
-        <Navbar display={{ base: "none", md: "flex" }} />
-      </Box>
-      <Collapse in={isOpen} animateOpacity>
-        <Center>
-          <Flex
-            mt={0}
-            flexDir="column"
-            gap={4}
-            alignItems="flex-center"
-            bg={"gray.200"}
-            w={"100vw"}
-            p={"20px"}
-            h={"300px"}
-          >
-            
-                     <div className="App-heade flex justify-center relative my-3  ">
+
+  return (
+    <Flex {...rest}>
+      <div className="!flex !flex-row  !mt-8 !bg-gray-200 !p-4 !rounded-full  m-auto h-20 ">
+        <div className="!text-xl !flex !flex-row  m-auto !font-bold !space-x-2 mt-1">
+          <div>
+            <img src="https://clear-link-bay.vercel.app/_next/static/media/logo.671288df.svg" />
+          </div>
+          <div>ClearLink.</div>
+        </div>
+
+        <div className=" justify-center flex flex-row m-auto  sm:space-x-3 md:space-x-4  lg:space-x-5 text-lg mx-4  font-semibold h-[80%] ">
+          <div className="App-header">
             <div
-              className="w-32 absolute opacity-100 z-30 "
+              className=" w-32 ml-5"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
-              <div className="flex items-center gap-1 ">
+              <div className="flex items-center gap-1">
                 <span className="text-black cursor-pointer">Products </span>
                 <span>
                   <svg
@@ -87,9 +62,10 @@ function Home() {
               {isDropdownVisible && <DropdownMenuProducts />}
             </div>
           </div>
-          <div className="App-heade  flex justify-center relative my-3 ">
+
+          <div className="App-header">
             <div
-              className="w-32 absolute opacity-100 z-20"
+              className="w-32"
               onMouseEnter={handleMouseEnter1}
               onMouseLeave={handleMouseLeave1}
             >
@@ -116,9 +92,9 @@ function Home() {
             </div>
           </div>
 
-          <div className="App-heade  flex justify-center relative my-3">
+          <div className="App-header">
             <div
-              className="w-32 absolute opacity-100 z-10"
+              className="w-32"
               onMouseEnter={handleMouseEnter2}
               onMouseLeave={handleMouseLeave2}
             >
@@ -144,24 +120,21 @@ function Home() {
               {isDropdownVisible2 && <DropdownMenuResources />}
             </div>
           </div>
-          <div className=" flex justify-center">
-            <span variant="primary" className="w-32 my-3">Pricing</span>
-            </div>
-            
 
-            <Box className=" space-x-2 flex   justify-center ">
-              <Button className="!bg-white !rounded-full  !border-sold !border-gray-200 !border-2 ">
-                Talk to sales
-              </Button>
-              <Button className="!bg-blue-600 !text-white !rounded-full hover:!bg-blue-500">
-                Sign up for free
-              </Button>
-            </Box>
-          </Flex>
-        </Center>
-      </Collapse>
-    </div>
+          <span className="!mr-4">Pricing</span>
+        </div>
+
+        <Box className=" !space-x-2 flex flex-row">
+          <Button className="!bg-white !rounded-full  !border-sold !border-gray-400 !border-2 w-[90px] lg:!w-[auto] !text-xs lg:!text-lg">
+            Talk to sales
+          </Button>
+          <Button className="!bg-blue-600 !text-white !rounded-full !hover:bg-blue-500 w-[90px] lg:!w-[auto] !text-xs lg:!text-lg">
+            Sign up for free
+          </Button>
+        </Box>
+      </div>
+    </Flex>
   );
-}
+};
 
-export default Home;
+export default Navbar;

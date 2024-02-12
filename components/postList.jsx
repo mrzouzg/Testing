@@ -28,16 +28,20 @@ export default function PostList({ posts }) {
                 color="text.secondary"
                 gutterBottom
               >
-                {data.title}
+                {data.product}
               </Typography>
               <Typography variant="h5" component="div">
-                {data.id}
+                {data.category}
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                {data.content}
+                {data.quantity}
               </Typography>
               <Typography variant="body2">
-                {data.userId}
+               $ {data.price}
+                <br />
+              </Typography>
+              <Typography variant="body2">
+               <img src={data.image} />
                 <br />
               </Typography>
               <Typography>
