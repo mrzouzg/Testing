@@ -4,25 +4,31 @@ import { Data } from "./data";
 const Profiles = () => {
   const [details, setDetails] = useState(Data[0]);
   const [activeIndex, setActiveIndex] = useState(0);
+ 
 
   const handleClick = (id) => {
     setActiveIndex(id);
     console.log("active index id", activeIndex);
-    const text = Data.find((cat) => cat.id === Data.index);
+    const getText = Data.find((act) => act.id === id);
 
-    console.log("name of person", text.name);
+     console.log("name of person", getText.name);
 
-    //setDetails(text);
+     setDetails(getText);
   };
 
   return (
-    <div className=" !text-5xl text-red-700 my-5 text-center">
-        <div  >
-    Name:    {details.name}
-      </div>
-      <div>
+    <div className=" !text-2xl text-red-700 my-5 text-center">
+            <div>
     ID:    {activeIndex}
     </div>
+        <div  >
+        {details.name}
+      
+      </div>
+      <div>
+        {details.text}
+      </div>
+
 
       <div className="flex  justify-center items-center !mx-3">
         {Data.map((item, index) => (
